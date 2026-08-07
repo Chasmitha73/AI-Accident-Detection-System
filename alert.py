@@ -1,0 +1,16 @@
+def send_alert(location,latitude,longitude,vehicle_number,status):
+    print("\n"+"="*45)
+    print("ACCIDENT OCCURED")
+    print("\n"+"="*45)
+    print(f"📍LOCATION:",location)
+    print(f"🌐Latitude:",latitude)
+    print(f"🌐Langitude:",longitude)
+    print(f"VEHICLE NUMBER:",vehicle_number)
+    print(f"ACCIDENT STATUS:",status)
+    maps_link=f"🗺️https://www.google.com/maps?q={latitude},{longitude}"
+    print("\nGoogle maps:")
+    print(maps_link)
+    print("\n Alert sent to:")
+    print("Nearest police station👮")
+    print("Nearest Ambulance🚑")
+    print("\n"+"="*45)

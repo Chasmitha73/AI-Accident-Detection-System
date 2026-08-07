@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+accidents.db
+.venv/
+venv/
+.env
+.vscode/
