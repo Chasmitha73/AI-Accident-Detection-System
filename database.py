@@ -1,6 +1,6 @@
 
 import sqlite3
-def save_accident_details(location,vehicle_number,current_time):
+def save_accident_details(location,vehicle_number,current_time,status,latitude,longitude):
     try:
         connection=sqlite3.connect("accidents.db")
         cursor=connection.cursor()
@@ -9,12 +9,15 @@ def save_accident_details(location,vehicle_number,current_time):
         (id INTEGER PRIMARY KEY AUTOINCREMENT,
         location TEXT,
         vehicle_number TEXT,
-        date_time TEXT)
+        date_time TEXT,
+        status TEXT,
+        latitude TEXT,
+        longitude TEXT)
         """)
         cursor.execute("""
-        INSERT INTO accidents(location,vehicle_number,date_time)
-         VALUES(?,?,?)
-         """,(location,vehicle_number,current_time))
+        INSERT INTO accidents(location,vehicle_number,date_time,status,latitude,longitude)
+         VALUES(?,?,?,?,?,?)
+         """,(location,vehicle_number,current_time,status,latitude,longitude))
         connection.commit()
         connection.close()
         print("database saved successfully")

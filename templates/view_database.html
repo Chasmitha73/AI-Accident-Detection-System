@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Accident Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📋 Accident Records</h1>
+
+    {% if accidents %}
+
+        {% for accident in accidents %}
+
+        <div class="accident-card">
+
+            <p><b>ID:</b> {{ accident["id"] }}</p>
+
+            <p><b>Location:</b> {{ accident["location"] }}</p>
+
+            <p><b>Vehicle Number:</b> {{ accident["vehicle_number"] }}</p>
+
+            <p><b>Date & Time:</b> {{ accident["date_time"] }}</p>
+
+            <p><b>Status:</b> {{ accident["status"] }}</p>
+
+            <p><b>Latitude:</b> {{ accident["latitude"] }}</p>
+
+            <p><b>Longitude:</b> {{ accident["longitude"] }}</p>
+
+            <p>
+                <a href="https://www.google.com/maps?q={{ accident['latitude'] }},{{ accident['longitude'] }}"
+                   target="_blank">
+                    🗺️ Open Google Maps
+                </a>
+            </p>
+
+            <form action="/delete/{{ accident['id'] }}" method="POST"
+                  onsubmit="return confirm('Are you sure you want to delete this accident record?');">
+
+                <button type="submit">🗑️ Delete</button>
+
+            </form>
+
+        </div>
+
+        <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>❌ No accident records found.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">⬅ Back to Home</a>
+
+</div>
+
+</body>
+</html>

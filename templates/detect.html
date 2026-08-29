@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accident Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🚨 Smart Accident Detection System</h1>
+
+        <h2>Accident Detection</h2>
+
+        <form method="POST">
+
+            <label>Location:</label>
+            <input type="text" name="location" placeholder="Enter location" required>
+
+            <label>Vehicle Number:</label>
+            <input type="text" name="vehicle_number" placeholder="KA21AB1234" required>
+
+            <label>status:</label>
+            <select name="status" required>
+                <option value="">Select status</option>
+                <option value="Minor">Minor</option>
+                <option value="Major">Major</option>
+                <option value="Critical">Critical</option>
+            </select>
+
+            <label>Latitude:</label>
+            <input type="text" name="latitude" placeholder="Example: 12.9716">
+
+            <label>Longitude:</label>
+            <input type="text" name="longitude" placeholder="Example: 77.5946">
+
+            <button type="submit">🚨 Detect & Save Accident</button>
+
+        </form>
+
+        <br>
+
+        <a href="/">⬅ Back to Home</a>
+
+    </div>
+
+</body>
+</html>

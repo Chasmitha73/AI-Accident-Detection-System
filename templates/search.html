@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Accident</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🔎 Search Accident</h1>
+
+    <form method="POST">
+
+        <label>Vehicle Number:</label>
+
+        <input type="text"
+               name="vehicle_number"
+               placeholder="KA21AB1234"
+               required>
+
+        <button type="submit">🔎 Search</button>
+
+    </form>
+
+    {% if accidents %}
+
+        <h2>🚨 Accident Details</h2>
+
+        {% for accident in accidents %}
+
+        <div class="accident-card">
+
+            <p><b>ID:</b> {{ accident["id"] }}</p>
+
+            <p><b>Location:</b> {{ accident["location"] }}</p>
+
+            <p><b>Vehicle Number:</b> {{ accident["vehicle_number"] }}</p>
+
+            <p><b>Date & Time:</b> {{ accident["date_time"] }}</p>
+
+            <p><b>Status:</b> {{ accident["status"] }}</p>
+
+            <p><b>Latitude:</b> {{ accident["latitude"] }}</p>
+
+            <p><b>Longitude:</b> {{ accident["longitude"] }}</p>
+
+            <p>
+                <b>Map:</b>
+                <a href="https://www.google.com/maps?q={{ accident['latitude'] }},{{ accident['longitude'] }}"
+                   target="_blank">
+                    🗺️ Open Google Maps
+                </a>
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    {% elif request.method == "POST" %}
+
+        <p>❌ No accident found for this vehicle number.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">⬅ Back to Home</a>
+
+</div>
+
+</body>
+</html>
